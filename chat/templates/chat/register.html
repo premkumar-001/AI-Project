@@ -1,0 +1,54 @@
+{% extends 'chat/index.html' %}
+{% block title %}
+Register
+{% endblock title %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="{% url 'home' %}">Chatbot</a>
+  </nav>
+    <section class="py-4 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>Register here</h1>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <label for="" class="form-label">User Name</label>
+                        {{form.username}}
+                        {% if form.errors.username %}
+                        <label class="text-danger">{{form.errors.username}}</label>
+                        {% endif %}
+                    </div>
+                    <div class="mb-2">
+                        <label for="" class="form-label">Email</label>
+                        {{form.email}}
+                        {% if form.errors.email %}
+                        <label class="text-danger">{{form.errors.email}}</label>
+                        {% endif %}
+                    </div>
+                    <div class="mb-2">
+                        <label for="" class="form-label">Password </label>
+                        {{form.password1}}
+                        {% if form.errors.password1 %}
+                        <label class="text-danger">{{form.errors.password1}}</label>
+                        {% endif %}
+                    </div>
+                    <div class="mb-2">
+                        <label for="" class="form-label">Confirm Password</label>
+                        {{form.password2}}
+                        {% if form.errors.password2 %}
+                        <label class="text-danger">{{form.errors.password2}}</label>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-dark">SignUp</button>
+                    <p class="mb-2">Already a user?<a  href="{% url 'sign_in' %}">Login Now!</a></p>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content%}
