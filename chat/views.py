@@ -35,7 +35,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request,"Registration Successful You can login now..!")
-            return render(request,"chat/sign_in.html")
+            return redirect('/sign_in')
     return render(request,"chat/register.html",{'form':form})
 
 def log_out(request):
